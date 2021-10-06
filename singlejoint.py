@@ -1,4 +1,3 @@
-
 # This is a sample Python script.
 import numpy as np
 import queue
@@ -53,7 +52,7 @@ if __name__ == '__main__':
     q_dot_f = 0
     q_dotdot_i = 0
     q_dotdot_f = 0
-    t_array = np.arange(0, tf, 0.005)
+    t_array = np.arange(0, tf, 0.006)
     p = 0
     v = 0
     a = 0
@@ -74,6 +73,11 @@ if __name__ == '__main__':
                 q_dotdot_i = 0
                 q_f = goal
                 i = 0
+                # IF YOU WANT TO ADD SPEED CHANGES THEN SWAP THE ABOVE LINES WITH THE BELOW LINES
+                # # q should input an array of [*absolute* position of joint, time(in seconds) to reach there]
+                # q_f = goal[0]
+                # tf = goal[1]
+                # t_array = np.arange(0, tf, 0.006)
                 print("switch")
             if i == len(t_array):
                 t = tf
@@ -91,9 +95,9 @@ if __name__ == '__main__':
             a = 2*a2 + 6*a3*t + 12*a4*t**2 + 20*a5*t**3
             arm6.set_servo_angle_j(angles=[0, 0, 0, 90, 0, p, 0], is_radian=False)
             tts = time.time() - start_time
-            sleep = 0.005 - tts
+            sleep = 0.006 - tts
 
-            if tts > 0.005:
+            if tts > 0.006:
                 sleep = 0
 
             #print(tts)
