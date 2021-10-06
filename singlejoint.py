@@ -71,7 +71,7 @@ if __name__ == '__main__':
                 goal = q.get()
                 q_i = p
                 q_dot_i = v
-                q_dotdot_i = a
+                q_dotdot_i = 0
                 q_f = goal
                 i = 0
                 print("switch")
