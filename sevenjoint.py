@@ -20,6 +20,7 @@ def liveTraj(qtraj):
     q_i = arm2.angles
         # arm2.angles
     # q_i = s[1]
+    t_step = 0.006
     q_dot_i = 0
     q_dot_f = 0
     q_dotdot_i = 0
@@ -29,7 +30,7 @@ def liveTraj(qtraj):
     tf = 3
     p=q_i[:]
 
-    t_array = np.arange(0, tf, 0.006)
+    t_array = np.arange(0, tf, t_step)
     print("start")
 
     while i <= len(t_array):
@@ -54,9 +55,9 @@ def liveTraj(qtraj):
 
         arm2.set_servo_angle_j(angles=p, is_radian=False)
         tts = time.time() - start_time
-        sleep = 0.006 - tts
+        sleep = t_step - tts
 
-        if tts > 0.006:
+        if tts > t_step:
             sleep = 0
 
 
